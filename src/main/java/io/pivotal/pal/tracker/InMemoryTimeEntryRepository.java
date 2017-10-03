@@ -1,52 +1,54 @@
 package io.pivotal.pal.tracker;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.http.ResponseEntity;
-
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-
 public class InMemoryTimeEntryRepository implements TimeEntryRepository {
+    private HashMap<Long, TimeEntry> timeEntries = new HashMap<>();
 
-    private static HashMap<Long, TimeEntry> timeEntryHashMap = new HashMap<Long, TimeEntry>();
-    private static TimeEntry createdTimeEntry = new TimeEntry(1L, 123L, 456L, LocalDate.parse("2017-01-08"), 8);
     @Override
     public TimeEntry create(TimeEntry timeEntry) {
-        long id =timeEntry.getId();
-        if (id==0)
-        {
-            id=1;
-        }
-        else
-        {
-            id=id+1;
-        }
+        Long id = timeEntries.size() + 1L;
+        TimeEntry newTimeEntry = new TimeEntry(
+            id,
+            timeEntry.getProjectId(),
+            timeEntry.getUserId(),
+            timeEntry.getDate(),
+            timeEntry.getHours()
+        );
 
-        timeEntryHashMap.put(id, createdTimeEntry);
-        return createdTimeEntry;
+        timeEntries.put(id, newTimeEntry);
+        return newTimeEntry;
     }
 
     @Override
-    public TimeEntry find(long timeEntryId) {
-        return timeEntryHashMap.get(timeEntryId);
+    public TimeEntry find(Long id) {
+        return timeEntries.get(id);
     }
 
     @Override
     public List<TimeEntry> list() {
-        
-        return new ArrayList<>(timeEntryHashMap.values());
+        return new ArrayList<>(timeEntries.values());
     }
 
     @Override
-    public TimeEntry update(long eq, TimeEntry any) {
-        return null;
+    public TimeEntry update(Long id, TimeEntry timeEntry) {
+        TimeEntry updatedEntry = new TimeEntry(
+            id,
+            timeEntry.getProjectId(),
+            timeEntry.getUserId(),
+            timeEntry.getDate(),
+            timeEntry.getHours()
+        );
+
+        timeEntries.replace(id, updatedEntry);
+        return updatedEntry;
     }
 
     @Override
-    public TimeEntry delete(long timeEntryId) {
-        return null;
+    public void delete(Long id) {
+        timeEntries.remove(id);
     }
 }
+
