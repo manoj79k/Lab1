@@ -4,6 +4,7 @@ applications:
   path: build/libs/pal-tracker.jar
   routes:
   - route: pal-tracker-aims.apps.pikes.pal.pivotal.io
+  - route: pal-tracker-aims-test.apps.pikes.pal.pivotal.io
 
   env:
-    WELCOME_MESSAGE: Hello from Cloud Foundry
+    WELCOME_MESSAGE: Hello from the review environment
