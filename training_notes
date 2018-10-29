@@ -58,3 +58,5 @@ OPTIONS:
 
 cf app pal-tracker
 
+git config --global user.name "Mona Lisa"
+
