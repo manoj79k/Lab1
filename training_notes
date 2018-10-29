@@ -1,0 +1,60 @@
+pal_user@explode:~/workspace/pal-tracker$ rm -rf pivtollab
+pal_user@explode:~/workspace/pal-tracker$ git remote -v 
+pal_user@explode:~/workspace/pal-tracker$ git remote add origin https://github.com/DocumentManagementTeam/pivtollab.git
+pal_user@explode:~/workspace/pal-tracker$ git remote -v
+origin	https://github.com/DocumentManagementTeam/pivtollab.git (fetch)
+origin	https://github.com/DocumentManagementTeam/pivtollab.git (push)
+pal_user@explode:~/workspace/pal-tracker$ 
+
+
+
+cd ~/workspace/pal-tracker
+./gradlew cloudNativeDeveloperSimpleApp -PserverUrl=http://pal-tracker-optimistic-hyrax.apps.pikes.pal.pivotal.io/
+
+
+
+cd ~/workspace/assignment-submission
+./gradlew cloudNativeDeveloperSimpleApp -PserverUrl=https://${APP_URL}
+
+
+git remote add other origin https://github.com/manoj79k/Lab1.git
+
+git remote remove origin https://github.com/DocumentManagementTeam/pivtollab.git
+
+git remote add origin https://github.com/DocumentManagementTeam/pivtollab.git
+
+
+git remote add origin https://github.com/DocumentManagementTeam/pivtollab.git
+
+git remote add origin https://github.com/manoj79k/Lab1.git
+
+git remote rm origin
+
+git remote add origin https://github.com/manoj79k/Lab1.git
+
+git commit -m "code chekin"
+
+
+
+ git push
+
+cf logs
+cf apps
+cf login -a https://api.sys.pikes.pal.pivotal.io --skip-ssl-validation
+cf set-env pal-tracker WELCOME_MESSAGE 'Imad testing from Cf'
+--scaling
+cf scale pal-tracker -i 2
+Vertical
+cf scale pal-tracker -m 2G
+USAGE:
+   cf scale APP_NAME [-i INSTANCES] [-k DISK] [-m MEMORY] [-f]
+
+OPTIONS:
+   -f      Force restart of app without prompt
+   -i      Number of instances
+   -k      Disk limit (e.g. 256M, 1024M, 1G)
+   -m      Memory limit (e.g. 256M, 1024M, 1G)
+
+
+cf app pal-tracker
+

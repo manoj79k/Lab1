@@ -1,0 +1,1573 @@
+-rwxr-xr-x 1 pal_user pal_user 5.2K Oct 29 11:28 gradlew
+-rw-r--r-- 1 pal_user pal_user 2.3K Oct 29 11:28 gradlew.bat
+-rw-r--r-- 1 pal_user pal_user  209 Oct 29 11:39 build.gradle
+pal_user@explode:~/workspace/pal-tracker$ pwd
+/home/pal_user/workspace/pal-tracker
+pal_user@explode:~/workspace/pal-tracker$ vi settings.gradle
+pal_user@explode:~/workspace/pal-tracker$ vi settings.gradle
+pal_user@explode:~/workspace/pal-tracker$ ls -ltrh
+total 28K
+-rw-r--r-- 1 pal_user pal_user   21 Oct 17 16:29 pal-tracker-codebase.txt
+drwxr-xr-x 3 pal_user pal_user 4.0K Oct 29 11:28 gradle
+-rwxr-xr-x 1 pal_user pal_user 5.2K Oct 29 11:28 gradlew
+-rw-r--r-- 1 pal_user pal_user 2.3K Oct 29 11:28 gradlew.bat
+-rw-r--r-- 1 pal_user pal_user  209 Oct 29 11:39 build.gradle
+-rw-r--r-- 1 pal_user pal_user   33 Oct 29 11:42 settings.gradle
+pal_user@explode:~/workspace/pal-tracker$ cf targets
+'targets' is not a registered command. See 'cf help -a'
+
+Did you mean?
+      target
+pal_user@explode:~/workspace/pal-tracker$ cf target
+No API endpoint set. Use 'cf login' or 'cf api' to target an endpoint.
+FAILED
+pal_user@explode:~/workspace/pal-tracker$ cf login
+
+API endpoint> bye
+FAILED
+Error performing request: Get https://bye/v2/info: dial tcp: lookup bye on 127.0.0.53:53: server misbehaving
+TIP: If you are behind a firewall and require an HTTP proxy, verify the https_proxy environment variable is correctly set. Else, check your network connection.
+pal_user@explode:~/workspace/pal-tracker$ dir
+build  build.gradle  gradle  gradlew  gradlew.bat  out	pal-tracker-codebase.txt  pal-tracker.iml  settings.gradle  src
+pal_user@explode:~/workspace/pal-tracker$ ls -ltrh
+total 44K
+-rw-r--r-- 1 pal_user pal_user   21 Oct 17 16:29 pal-tracker-codebase.txt
+drwxr-xr-x 3 pal_user pal_user 4.0K Oct 29 11:28 gradle
+-rwxr-xr-x 1 pal_user pal_user 5.2K Oct 29 11:28 gradlew
+-rw-r--r-- 1 pal_user pal_user 2.3K Oct 29 11:28 gradlew.bat
+-rw-r--r-- 1 pal_user pal_user  209 Oct 29 11:39 build.gradle
+-rw-r--r-- 1 pal_user pal_user   33 Oct 29 11:42 settings.gradle
+-rw-rw-r-- 1 pal_user pal_user  749 Oct 29 11:44 pal-tracker.iml
+drwxrwxr-x 3 pal_user pal_user 4.0K Oct 29 11:45 src
+drwxrwxr-x 3 pal_user pal_user 4.0K Oct 29 11:52 out
+drwxrwxr-x 5 pal_user pal_user 4.0K Oct 29 12:07 build
+pal_user@explode:~/workspace/pal-tracker$ clear
+
+pal_user@explode:~/workspace/pal-tracker$ cf login
+
+API endpoint> https://api.sys.pikes.pal.pivotal.io
+
+Email> squadri@ford.com
+
+Password> 
+Authenticating...
+OK
+
+Targeted org imad-quadri
+
+Targeted space sandbox
+
+
+                
+API endpoint:   https://api.sys.pikes.pal.pivotal.io (API version: 2.103.0)
+User:           squadri@ford.com
+Org:            imad-quadri
+Space:          sandbox
+pal_user@explode:~/workspace/pal-tracker$ cf targets
+'targets' is not a registered command. See 'cf help -a'
+
+Did you mean?
+      target
+pal_user@explode:~/workspace/pal-tracker$ cf target
+api endpoint:   https://api.sys.pikes.pal.pivotal.io
+api version:    2.103.0
+user:           squadri@ford.com
+org:            imad-quadri
+space:          sandbox
+pal_user@explode:~/workspace/pal-tracker$ pwd
+/home/pal_user/workspace/pal-tracker
+pal_user@explode:~/workspace/pal-tracker$ cf push -p ./build/libs/pal-tracker.jar
+Pushing app  to org imad-quadri / space sandbox as squadri@ford.com...
+Incorrect usage: The push command requires an app name. The app name can be supplied as an argument or with a manifest.yml file.
+FAILED
+
+NAME:
+   push - Push a new app or sync changes to an existing app
+
+USAGE:
+   cf push APP_NAME [-b BUILDPACK_NAME] [-c COMMAND] [-f MANIFEST_PATH | --no-manifest] [--no-start]
+   [-i NUM_INSTANCES] [-k DISK] [-m MEMORY] [-p PATH] [-s STACK] [-t HEALTH_TIMEOUT] [-u (process | port | http)]
+   [--no-route | --random-route | --hostname HOST | --no-hostname] [-d DOMAIN] [--route-path ROUTE_PATH] [--var KEY=VALUE]... [--vars-file VARS_FILE_PATH]...
+
+   cf push APP_NAME --docker-image [REGISTRY_HOST:PORT/]IMAGE[:TAG] [--docker-username USERNAME]
+   [-c COMMAND] [-f MANIFEST_PATH | --no-manifest] [--no-start]
+   [-i NUM_INSTANCES] [-k DISK] [-m MEMORY] [-t HEALTH_TIMEOUT] [-u (process | port | http)]
+   [--no-route | --random-route | --hostname HOST | --no-hostname] [-d DOMAIN] [--route-path ROUTE_PATH] [--var KEY=VALUE]... [--vars-file VARS_FILE_PATH]...
+
+   cf push APP_NAME --droplet DROPLET_PATH
+   [-c COMMAND] [-f MANIFEST_PATH | --no-manifest] [--no-start]
+   [-i NUM_INSTANCES] [-k DISK] [-m MEMORY] [-t HEALTH_TIMEOUT] [-u (process | port | http)]
+   [--no-route | --random-route | --hostname HOST | --no-hostname] [-d DOMAIN] [--route-path ROUTE_PATH] [--var KEY=VALUE]... [--vars-file VARS_FILE_PATH]...
+
+   cf push -f MANIFEST_WITH_MULTIPLE_APPS_PATH [APP_NAME] [--no-start]
+
+ALIAS:
+   p
+
+OPTIONS:
+   -b                           Custom buildpack by name (e.g. my-buildpack) or Git URL (e.g. 'https://github.com/cloudfoundry/java-buildpack.git') or Git URL with a branch or tag (e.g. 'https://github.com/cloudfoundry/java-buildpack.git#v3.3.0' for 'v3.3.0' tag). To use built-in buildpacks only, specify 'default' or 'null'
+   -c                           Startup command, set to null to reset to default start command
+   -d                           Specify a custom domain (e.g. private-domain.example.com, apps.internal.com) to use instead of the default domain
+   --docker-image, -o           Docker-image to be used (e.g. user/docker-image-name)
+   --docker-username            Repository username; used with password from environment variable CF_DOCKER_PASSWORD
+   --droplet                    Path to a tgz file with a pre-staged app
+   -f                           Path to manifest
+   --health-check-type, -u      Application health check type (Default: 'port', 'none' accepted for 'process', 'http' implies endpoint '/')
+   --hostname, -n               Hostname (e.g. my-subdomain)
+   -i                           Number of instances
+   -k                           Disk limit (e.g. 256M, 1024M, 1G)
+   -m                           Memory limit (e.g. 256M, 1024M, 1G)
+   --no-hostname                Map the root domain to this app
+   --no-manifest                Ignore manifest file
+   --no-route                   Do not map a route to this app and remove routes from previous pushes of this app
+   --no-start                   Do not start an app after pushing
+   -p                           Path to app directory or to a zip file of the contents of the app directory
+   --random-route               Create a random route for this app
+   --route-path                 Path for the route
+   -s                           Stack to use (a stack is a pre-built file system, including an operating system, that can run apps)
+   --vars-file                  Path to a variable substitution file for manifest; can specify multiple times
+   --var                        Variable key value pair for variable substitution, (e.g., name=app1); can specify multiple times
+   -t                           Time (in seconds) allowed to elapse between starting up an app and the first healthy response from the app
+
+ENVIRONMENT:
+   CF_STAGING_TIMEOUT=15        Max wait time for buildpack staging, in minutes
+   CF_STARTUP_TIMEOUT=5         Max wait time for app instance startup, in minutes
+   CF_DOCKER_PASSWORD=          Password used for private docker repository
+
+SEE ALSO:
+   apps, create-app-manifest, logs, ssh, start
+pal_user@explode:~/workspace/pal-tracker$ cf push -p build/libs/pal-tracker.jar
+Pushing app  to org imad-quadri / space sandbox as squadri@ford.com...
+Incorrect usage: The push command requires an app name. The app name can be supplied as an argument or with a manifest.yml file.
+FAILED
+
+NAME:
+   push - Push a new app or sync changes to an existing app
+
+USAGE:
+   cf push APP_NAME [-b BUILDPACK_NAME] [-c COMMAND] [-f MANIFEST_PATH | --no-manifest] [--no-start]
+   [-i NUM_INSTANCES] [-k DISK] [-m MEMORY] [-p PATH] [-s STACK] [-t HEALTH_TIMEOUT] [-u (process | port | http)]
+   [--no-route | --random-route | --hostname HOST | --no-hostname] [-d DOMAIN] [--route-path ROUTE_PATH] [--var KEY=VALUE]... [--vars-file VARS_FILE_PATH]...
+
+   cf push APP_NAME --docker-image [REGISTRY_HOST:PORT/]IMAGE[:TAG] [--docker-username USERNAME]
+   [-c COMMAND] [-f MANIFEST_PATH | --no-manifest] [--no-start]
+   [-i NUM_INSTANCES] [-k DISK] [-m MEMORY] [-t HEALTH_TIMEOUT] [-u (process | port | http)]
+   [--no-route | --random-route | --hostname HOST | --no-hostname] [-d DOMAIN] [--route-path ROUTE_PATH] [--var KEY=VALUE]... [--vars-file VARS_FILE_PATH]...
+
+   cf push APP_NAME --droplet DROPLET_PATH
+   [-c COMMAND] [-f MANIFEST_PATH | --no-manifest] [--no-start]
+   [-i NUM_INSTANCES] [-k DISK] [-m MEMORY] [-t HEALTH_TIMEOUT] [-u (process | port | http)]
+   [--no-route | --random-route | --hostname HOST | --no-hostname] [-d DOMAIN] [--route-path ROUTE_PATH] [--var KEY=VALUE]... [--vars-file VARS_FILE_PATH]...
+
+   cf push -f MANIFEST_WITH_MULTIPLE_APPS_PATH [APP_NAME] [--no-start]
+
+ALIAS:
+   p
+
+OPTIONS:
+   -b                           Custom buildpack by name (e.g. my-buildpack) or Git URL (e.g. 'https://github.com/cloudfoundry/java-buildpack.git') or Git URL with a branch or tag (e.g. 'https://github.com/cloudfoundry/java-buildpack.git#v3.3.0' for 'v3.3.0' tag). To use built-in buildpacks only, specify 'default' or 'null'
+   -c                           Startup command, set to null to reset to default start command
+   -d                           Specify a custom domain (e.g. private-domain.example.com, apps.internal.com) to use instead of the default domain
+   --docker-image, -o           Docker-image to be used (e.g. user/docker-image-name)
+   --docker-username            Repository username; used with password from environment variable CF_DOCKER_PASSWORD
+   --droplet                    Path to a tgz file with a pre-staged app
+   -f                           Path to manifest
+   --health-check-type, -u      Application health check type (Default: 'port', 'none' accepted for 'process', 'http' implies endpoint '/')
+   --hostname, -n               Hostname (e.g. my-subdomain)
+   -i                           Number of instances
+   -k                           Disk limit (e.g. 256M, 1024M, 1G)
+   -m                           Memory limit (e.g. 256M, 1024M, 1G)
+   --no-hostname                Map the root domain to this app
+   --no-manifest                Ignore manifest file
+   --no-route                   Do not map a route to this app and remove routes from previous pushes of this app
+   --no-start                   Do not start an app after pushing
+   -p                           Path to app directory or to a zip file of the contents of the app directory
+   --random-route               Create a random route for this app
+   --route-path                 Path for the route
+   -s                           Stack to use (a stack is a pre-built file system, including an operating system, that can run apps)
+   --vars-file                  Path to a variable substitution file for manifest; can specify multiple times
+   --var                        Variable key value pair for variable substitution, (e.g., name=app1); can specify multiple times
+   -t                           Time (in seconds) allowed to elapse between starting up an app and the first healthy response from the app
+
+ENVIRONMENT:
+   CF_STAGING_TIMEOUT=15        Max wait time for buildpack staging, in minutes
+   CF_STARTUP_TIMEOUT=5         Max wait time for app instance startup, in minutes
+   CF_DOCKER_PASSWORD=          Password used for private docker repository
+
+SEE ALSO:
+   apps, create-app-manifest, logs, ssh, start
+pal_user@explode:~/workspace/pal-tracker$ cf push -p build/libs/pal-tracker.jar pal-tracker
+Pushing app pal-tracker to org imad-quadri / space sandbox as squadri@ford.com...
+Getting app info...
+The app cannot be mapped to route pal-tracker.apps.pikes.pal.pivotal.io because the route exists in a different space.
+FAILED
+pal_user@explode:~/workspace/pal-tracker$ cf push -p build/libs/pal-tracker.jar pal-tracker --random-route
+Pushing app pal-tracker to org imad-quadri / space sandbox as squadri@ford.com...
+Getting app info...
+Creating app with these attributes...
++ name:       pal-tracker
+  path:       /home/pal_user/workspace/pal-tracker/build/libs/pal-tracker.jar
+  routes:
++   pal-tracker-optimistic-hyrax.apps.pikes.pal.pivotal.io
+
+Creating app pal-tracker...
+Mapping routes...
+Comparing local files to remote cache...
+Packaging files to upload...
+Uploading files...
+ 315.40 KiB / 315.40 KiB [==================================================================================================================================] 100.00% 1s
+
+Waiting for API to complete processing files...
+timeout connecting to log server, no log will be shown
+
+
+Staging app and tracing logs...
+maximum number of connection retries reached
+
+
+Waiting for app to start...
+
+name:              pal-tracker
+requested state:   started
+routes:            pal-tracker-optimistic-hyrax.apps.pikes.pal.pivotal.io
+last uploaded:     Mon 29 Oct 13:24:01 EDT 2018
+stack:             cflinuxfs2
+buildpacks:        client-certificate-mapper=1.5.0_RELEASE container-security-provider=1.11.0_RELEASE
+                   java-buildpack=v4.8-offline-https://github.com/cloudfoundry/java-buildpack.git#9f97630 java-main java-opts java-security
+                   jvmkill-agent=1.12.0_RELEASE open-jdk-l...
+
+type:            web
+instances:       1/1
+memory usage:    1024M
+start command:   JAVA_OPTS="-agentpath:$PWD/.java-buildpack/open_jdk_jre/bin/jvmkill-1.12.0_RELEASE=printHeapHistogram=1 -Djava.io.tmpdir=$TMPDIR
+                 -Djava.ext.dirs=$PWD/.java-buildpack/container_security_provider:$PWD/.java-buildpack/open_jdk_jre/lib/ext
+                 -Djava.security.properties=$PWD/.java-buildpack/java_security/java.security $JAVA_OPTS" &&
+                 CALCULATED_MEMORY=$($PWD/.java-buildpack/open_jdk_jre/bin/java-buildpack-memory-calculator-3.10.0_RELEASE -totMemory=$MEMORY_LIMIT -stackThreads=250
+                 -loadedClasses=13548 -poolType=metaspace -vmOptions="$JAVA_OPTS") && echo JVM Memory Configuration: $CALCULATED_MEMORY && JAVA_OPTS="$JAVA_OPTS
+                 $CALCULATED_MEMORY" && SERVER_PORT=$PORT eval exec $PWD/.java-buildpack/open_jdk_jre/bin/java $JAVA_OPTS -cp $PWD/.
+                 org.springframework.boot.loader.JarLauncher
+     state     since                  cpu    memory         disk           details
+#0   running   2018-10-29T17:24:10Z   0.0%   269.2M of 1G   137.5M of 1G   
+
+pal_user@explode:~/workspace/pal-tracker$ cf apps
+Getting apps in org imad-quadri / space sandbox as squadri@ford.com...
+OK
+
+name          requested state   instances   memory   disk   urls
+pal-tracker   started           1/1         1G       1G     pal-tracker-optimistic-hyrax.apps.pikes.pal.pivotal.io
+pal_user@explode:~/workspace/pal-tracker$ cf push -p build/libs/pal-tracker.jar pal-tracker --random-route
+
+
+Pushing app pal-tracker to org imad-quadri / space sandbox as squadri@ford.com...
+Getting app info...
+Updating app with these attributes...
+  name:                pal-tracker
+  path:                /home/pal_user/workspace/pal-tracker/build/libs/pal-tracker.jar
+  command:             JAVA_OPTS="-agentpath:$PWD/.java-buildpack/open_jdk_jre/bin/jvmkill-1.12.0_RELEASE=printHeapHistogram=1 -Djava.io.tmpdir=$TMPDIR -Djava.ext.dirs=$PWD/.java-buildpack/container_security_provider:$PWD/.java-buildpack/open_jdk_jre/lib/ext -Djava.security.properties=$PWD/.java-buildpack/java_security/java.security $JAVA_OPTS" && CALCULATED_MEMORY=$($PWD/.java-buildpack/open_jdk_jre/bin/java-buildpack-memory-calculator-3.10.0_RELEASE -totMemory=$MEMORY_LIMIT -stackThreads=250 -loadedClasses=13548 -poolType=metaspace -vmOptions="$JAVA_OPTS") && echo JVM Memory Configuration: $CALCULATED_MEMORY && JAVA_OPTS="$JAVA_OPTS $CALCULATED_MEMORY" && SERVER_PORT=$PORT eval exec $PWD/.java-buildpack/open_jdk_jre/bin/java $JAVA_OPTS -cp $PWD/. org.springframework.boot.loader.JarLauncher
+  disk quota:          1G
+  health check type:   port
+  instances:           1
+  memory:              1G
+  stack:               cflinuxfs2
+  routes:
+    pal-tracker-optimistic-hyrax.apps.pikes.pal.pivotal.io
+
+Updating app pal-tracker...
+Mapping routes...
+Comparing local files to remote cache...
+Packaging files to upload...
+Uploading files...
+ 315.40 KiB / 315.40 KiB [==================================================================================================================================] 100.00% 1s
+
+Waiting for API to complete processing files...
+timeout connecting to log server, no log will be shown
+
+
+Stopping app...
+
+Staging app and tracing logs...
+maximum number of connection retries reached
+
+
+Waiting for app to start...
+
+name:              pal-tracker
+requested state:   started
+routes:            pal-tracker-optimistic-hyrax.apps.pikes.pal.pivotal.io
+last uploaded:     Mon 29 Oct 13:26:55 EDT 2018
+stack:             cflinuxfs2
+buildpacks:        client-certificate-mapper=1.5.0_RELEASE container-security-provider=1.11.0_RELEASE
+                   java-buildpack=v4.8-offline-https://github.com/cloudfoundry/java-buildpack.git#9f97630 java-main java-opts java-security
+                   jvmkill-agent=1.12.0_RELEASE open-jdk-l...
+
+type:            web
+instances:       1/1
+memory usage:    1024M
+start command:   JAVA_OPTS="-agentpath:$PWD/.java-buildpack/open_jdk_jre/bin/jvmkill-1.12.0_RELEASE=printHeapHistogram=1 -Djava.io.tmpdir=$TMPDIR
+                 -Djava.ext.dirs=$PWD/.java-buildpack/container_security_provider:$PWD/.java-buildpack/open_jdk_jre/lib/ext
+                 -Djava.security.properties=$PWD/.java-buildpack/java_security/java.security $JAVA_OPTS" &&
+                 CALCULATED_MEMORY=$($PWD/.java-buildpack/open_jdk_jre/bin/java-buildpack-memory-calculator-3.10.0_RELEASE -totMemory=$MEMORY_LIMIT -stackThreads=250
+                 -loadedClasses=13548 -poolType=metaspace -vmOptions="$JAVA_OPTS") && echo JVM Memory Configuration: $CALCULATED_MEMORY && JAVA_OPTS="$JAVA_OPTS
+                 $CALCULATED_MEMORY" && SERVER_PORT=$PORT eval exec $PWD/.java-buildpack/open_jdk_jre/bin/java $JAVA_OPTS -cp $PWD/.
+                 org.springframework.boot.loader.JarLauncher
+     state     since                  cpu    memory         disk           details
+#0   running   2018-10-29T17:27:06Z   0.0%   248.3M of 1G   137.5M of 1G   
+
+pal_user@explode:~/workspace/pal-tracker$ 
+pal_user@explode:~/workspace/pal-tracker$ 
+pal_user@explode:~/workspace/pal-tracker$ cf apps
+Getting apps in org imad-quadri / space sandbox as squadri@ford.com...
+OK
+
+name          requested state   instances   memory   disk   urls
+pal-tracker   started           1/1         1G       1G     pal-tracker-optimistic-hyrax.apps.pikes.pal.pivotal.io
+pal_user@explode:~/workspace/pal-tracker$ pwd
+/home/pal_user/workspace/pal-tracker
+pal_user@explode:~/workspace/pal-tracker$ ls -ltrh
+total 44K
+-rw-r--r-- 1 pal_user pal_user   21 Oct 17 16:29 pal-tracker-codebase.txt
+drwxr-xr-x 3 pal_user pal_user 4.0K Oct 29 11:28 gradle
+-rwxr-xr-x 1 pal_user pal_user 5.2K Oct 29 11:28 gradlew
+-rw-r--r-- 1 pal_user pal_user 2.3K Oct 29 11:28 gradlew.bat
+-rw-r--r-- 1 pal_user pal_user  209 Oct 29 11:39 build.gradle
+-rw-r--r-- 1 pal_user pal_user   33 Oct 29 11:42 settings.gradle
+-rw-rw-r-- 1 pal_user pal_user  749 Oct 29 11:44 pal-tracker.iml
+drwxrwxr-x 3 pal_user pal_user 4.0K Oct 29 11:45 src
+drwxrwxr-x 3 pal_user pal_user 4.0K Oct 29 11:52 out
+drwxrwxr-x 6 pal_user pal_user 4.0K Oct 29 13:20 build
+pal_user@explode:~/workspace/pal-tracker$ cd ~/workspace/pal-tracker
+pal_user@explode:~/workspace/pal-tracker$ ./gradlew cloudNativeDeveloperSimpleApp -PserverUrl=https://http://pal-tracker-optimistic-hyrax.apps.pikes.pal.pivotal.io/
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Task 'cloudNativeDeveloperSimpleApp' not found in root project 'pal-tracker'.
+
+* Try:
+Run gradlew tasks to get a list of available tasks. Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output. Run with --scan to get full insights.
+
+* Get more help at https://help.gradle.org
+
+BUILD FAILED in 0s
+pal_user@explode:~/workspace/pal-tracker$ cf push -p build/libs/pal-tracker.jar pal-tracker --random-route
+Pushing app pal-tracker to org imad-quadri / space sandbox as squadri@ford.com...
+Getting app info...
+Updating app with these attributes...
+  name:                pal-tracker
+  path:                /home/pal_user/workspace/pal-tracker/build/libs/pal-tracker.jar
+  command:             JAVA_OPTS="-agentpath:$PWD/.java-buildpack/open_jdk_jre/bin/jvmkill-1.12.0_RELEASE=printHeapHistogram=1 -Djava.io.tmpdir=$TMPDIR -Djava.ext.dirs=$PWD/.java-buildpack/container_security_provider:$PWD/.java-buildpack/open_jdk_jre/lib/ext -Djava.security.properties=$PWD/.java-buildpack/java_security/java.security $JAVA_OPTS" && CALCULATED_MEMORY=$($PWD/.java-buildpack/open_jdk_jre/bin/java-buildpack-memory-calculator-3.10.0_RELEASE -totMemory=$MEMORY_LIMIT -stackThreads=250 -loadedClasses=13548 -poolType=metaspace -vmOptions="$JAVA_OPTS") && echo JVM Memory Configuration: $CALCULATED_MEMORY && JAVA_OPTS="$JAVA_OPTS $CALCULATED_MEMORY" && SERVER_PORT=$PORT eval exec $PWD/.java-buildpack/open_jdk_jre/bin/java $JAVA_OPTS -cp $PWD/. org.springframework.boot.loader.JarLauncher
+  disk quota:          1G
+  health check type:   port
+  instances:           1
+  memory:              1G
+  stack:               cflinuxfs2
+  routes:
+    pal-tracker-optimistic-hyrax.apps.pikes.pal.pivotal.io
+
+Updating app pal-tracker...
+Mapping routes...
+Comparing local files to remote cache...
+Packaging files to upload...
+Uploading files...
+ 315.40 KiB / 315.40 KiB [==================================================================================================================================] 100.00% 1s
+
+Waiting for API to complete processing files...
+timeout connecting to log server, no log will be shown
+
+
+Stopping app...
+
+Staging app and tracing logs...
+maximum number of connection retries reached
+
+
+Waiting for app to start...
+
+name:              pal-tracker
+requested state:   started
+routes:            pal-tracker-optimistic-hyrax.apps.pikes.pal.pivotal.io
+last uploaded:     Mon 29 Oct 13:34:14 EDT 2018
+stack:             cflinuxfs2
+buildpacks:        client-certificate-mapper=1.5.0_RELEASE container-security-provider=1.11.0_RELEASE
+                   java-buildpack=v4.8-offline-https://github.com/cloudfoundry/java-buildpack.git#9f97630 java-main java-opts java-security
+                   jvmkill-agent=1.12.0_RELEASE open-jdk-l...
+
+type:            web
+instances:       1/1
+memory usage:    1024M
+start command:   JAVA_OPTS="-agentpath:$PWD/.java-buildpack/open_jdk_jre/bin/jvmkill-1.12.0_RELEASE=printHeapHistogram=1 -Djava.io.tmpdir=$TMPDIR
+                 -Djava.ext.dirs=$PWD/.java-buildpack/container_security_provider:$PWD/.java-buildpack/open_jdk_jre/lib/ext
+                 -Djava.security.properties=$PWD/.java-buildpack/java_security/java.security $JAVA_OPTS" &&
+                 CALCULATED_MEMORY=$($PWD/.java-buildpack/open_jdk_jre/bin/java-buildpack-memory-calculator-3.10.0_RELEASE -totMemory=$MEMORY_LIMIT -stackThreads=250
+                 -loadedClasses=13548 -poolType=metaspace -vmOptions="$JAVA_OPTS") && echo JVM Memory Configuration: $CALCULATED_MEMORY && JAVA_OPTS="$JAVA_OPTS
+                 $CALCULATED_MEMORY" && SERVER_PORT=$PORT eval exec $PWD/.java-buildpack/open_jdk_jre/bin/java $JAVA_OPTS -cp $PWD/.
+                 org.springframework.boot.loader.JarLauncher
+     state     since                  cpu    memory         disk           details
+#0   running   2018-10-29T17:34:27Z   0.0%   318.9M of 1G   137.5M of 1G   
+
+pal_user@explode:~/workspace/pal-tracker$ ./gradlew cloudNativeDeveloperSimpleApp -PserverUrl=https://http://pal-tracker-optimistic-hyrax.apps.pikes.pal.pivotal.io/^C
+pal_user@explode:~/workspace/pal-tracker$ ^C
+pal_user@explode:~/workspace/pal-tracker$ ^C
+pal_user@explode:~/workspace/pal-tracker$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	new file:   src/main/java/io/pivotal/pal/tracker/PalTrackerApplication.java
+	new file:   src/main/java/io/pivotal/pal/tracker/WelcomeController.java
+	new file:   src/main/resources/application.properties
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   .gitignore
+	modified:   src/main/java/io/pivotal/pal/tracker/PalTrackerApplication.java
+	modified:   src/main/java/io/pivotal/pal/tracker/WelcomeController.java
+	modified:   src/main/resources/application.properties
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	build.gradle
+	gradle/
+	gradlew
+	gradlew.bat
+	settings.gradle
+
+pal_user@explode:~/workspace/pal-tracker$ git add .
+pal_user@explode:~/workspace/pal-tracker$ git commit
+Aborting commit due to empty commit message.
+pal_user@explode:~/workspace/pal-tracker$ git commit -a "code chekin"
+fatal: Paths with -a does not make sense.
+pal_user@explode:~/workspace/pal-tracker$ git commit 
+Use "fg" to return to nano.or to close the file... 
+
+[1]+  Stopped                 git commit
+pal_user@explode:~/workspace/pal-tracker$ git commit -m "code chekin"
+[master ec5884b] code chekin
+ 10 files changed, 311 insertions(+)
+ create mode 100644 build.gradle
+ create mode 100644 gradle/wrapper/gradle-wrapper.jar
+ create mode 100644 gradle/wrapper/gradle-wrapper.properties
+ create mode 100755 gradlew
+ create mode 100644 gradlew.bat
+ create mode 100644 settings.gradle
+ create mode 100644 src/main/java/io/pivotal/pal/tracker/PalTrackerApplication.java
+ create mode 100644 src/main/java/io/pivotal/pal/tracker/WelcomeController.java
+ create mode 100644 src/main/resources/application.properties
+pal_user@explode:~/workspace/pal-tracker$ git commit -m "code chekin"
+On branch master
+Your branch is ahead of 'origin/master' by 2 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+pal_user@explode:~/workspace/pal-tracker$ git push origin pivtollab
+error: src refspec pivtollab does not match any.
+error: failed to push some refs to 'https://github.com/DocumentManagementTeam/pivtollab.git'
+pal_user@explode:~/workspace/pal-tracker$ git push 
+Username for 'https://github.com': imadqacct
+Password for 'https://imadqacct@github.com': 
+Counting objects: 28, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (17/17), done.
+Writing objects: 100% (28/28), 52.80 KiB | 4.06 MiB/s, done.
+Total 28 (delta 0), reused 5 (delta 0)
+remote: 
+remote: Create a pull request for 'master' on GitHub by visiting:
+remote:      https://github.com/DocumentManagementTeam/pivtollab/pull/new/master
+remote: 
+To https://github.com/DocumentManagementTeam/pivtollab.git
+ * [new branch]      master -> master
+pal_user@explode:~/workspace/pal-tracker$ git remote add origin https://github.com/manoj79k/Lab1.git
+fatal: remote origin already exists.
+pal_user@explode:~/workspace/pal-tracker$ git remote remove origin https://github.com/DocumentManagementTeam/pivtollab.git
+usage: git remote remove <name>
+
+pal_user@explode:~/workspace/pal-tracker$ git remote rm origin https://github.com/DocumentManagementTeam/pivtollab.git
+usage: git remote remove <name>
+
+pal_user@explode:~/workspace/pal-tracker$ git remote rm origin https://github.com/DocumentManagementTeam/pivtollab.git
+usage: git remote remove <name>
+
+pal_user@explode:~/workspace/pal-tracker$ git remote rm origin https://github.com/DocumentManagementTeam/pivtollab.git
+usage: git remote remove <name>
+
+pal_user@explode:~/workspace/pal-tracker$ git remote -v
+origin	https://github.com/DocumentManagementTeam/pivtollab.git (fetch)
+origin	https://github.com/DocumentManagementTeam/pivtollab.git (push)
+pal_user@explode:~/workspace/pal-tracker$ git remote rm  https://github.com/DocumentManagementTeam/pivtollab.git
+fatal: No such remote: https://github.com/DocumentManagementTeam/pivtollab.git
+pal_user@explode:~/workspace/pal-tracker$ git remote rm  https://github.com/DocumentManagementTeam/pivtollab.git
+fatal: No such remote: https://github.com/DocumentManagementTeam/pivtollab.git
+pal_user@explode:~/workspace/pal-tracker$ git remote rm  https://github.com/DocumentManagementTeam/pivtollab.git
+fatal: No such remote: https://github.com/DocumentManagementTeam/pivtollab.git
+pal_user@explode:~/workspace/pal-tracker$ git remote rm origin https://github.com/DocumentManagementTeam/pivtollab.git
+usage: git remote remove <name>
+
+pal_user@explode:~/workspace/pal-tracker$ git remote remove origin https://github.com/DocumentManagementTeam/pivtollab.git
+usage: git remote remove <name>
+
+pal_user@explode:~/workspace/pal-tracker$ git remote remove https://github.com/DocumentManagementTeam/pivtollab.git
+fatal: No such remote: https://github.com/DocumentManagementTeam/pivtollab.git
+pal_user@explode:~/workspace/pal-tracker$ git remote -v
+origin	https://github.com/DocumentManagementTeam/pivtollab.git (fetch)
+origin	https://github.com/DocumentManagementTeam/pivtollab.git (push)
+pal_user@explode:~/workspace/pal-tracker$ git remote rm origin
+pal_user@explode:~/workspace/pal-tracker$ git remote -v
+pal_user@explode:~/workspace/pal-tracker$ git remote add origin https://github.com/manoj79k/Lab1.git
+pal_user@explode:~/workspace/pal-tracker$ git remote -v
+origin	https://github.com/manoj79k/Lab1.git (fetch)
+origin	https://github.com/manoj79k/Lab1.git (push)
+pal_user@explode:~/workspace/pal-tracker$ git push
+fatal: The current branch master has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin master
+
+pal_user@explode:~/workspace/pal-tracker$ git status
+On branch master
+nothing to commit, working tree clean
+pal_user@explode:~/workspace/pal-tracker$ git checkout origin
+error: pathspec 'origin' did not match any file(s) known to git.
+pal_user@explode:~/workspace/pal-tracker$ git status
+On branch master
+nothing to commit, working tree clean
+pal_user@explode:~/workspace/pal-tracker$ git remote add origin https://github.com/DocumentManagementTeam/pivtollab.git
+fatal: remote origin already exists.
+pal_user@explode:~/workspace/pal-tracker$ git add origin https://github.com/DocumentManagementTeam/pivtollab.git
+fatal: pathspec 'origin' did not match any files
+pal_user@explode:~/workspace/pal-tracker$ git remote rm origin
+pal_user@explode:~/workspace/pal-tracker$ git add origin https://github.com/DocumentManagementTeam/pivtollab.git
+fatal: pathspec 'origin' did not match any files
+pal_user@explode:~/workspace/pal-tracker$ git remote -v
+pal_user@explode:~/workspace/pal-tracker$ git remote add origin https://github.com/DocumentManagementTeam/pivtollab.git
+pal_user@explode:~/workspace/pal-tracker$ git remote -v
+origin	https://github.com/DocumentManagementTeam/pivtollab.git (fetch)
+origin	https://github.com/DocumentManagementTeam/pivtollab.git (push)
+pal_user@explode:~/workspace/pal-tracker$ git cherry-pick deployment-start
+[master 07d78a0] Add tests for deployment lab
+ Author: Tyson Gern <tgern@pivotal.io>
+ Date: Thu Jul 20 13:56:50 2017 -0600
+ 3 files changed, 70 insertions(+)
+ create mode 100644 src/test/java/test/pivotal/pal/tracker/EnvControllerTest.java
+ create mode 100644 src/test/java/test/pivotal/pal/tracker/WelcomeControllerTest.java
+ create mode 100644 src/test/java/test/pivotal/pal/trackerapi/WelcomeApiTest.java
+pal_user@explode:~/workspace/pal-tracker$ WELCOME_MESSAGE=hello ./gradlew bootRun
+
+> Task :compileJava FAILED
+/home/pal_user/workspace/pal-tracker/src/main/java/io/pivotal/pal/tracker/WelcomeController.java:16: error: illegal start of expression
+    return  @Value("${WELCOME_MESSAGE}");
+                                        ^
+/home/pal_user/workspace/pal-tracker/src/main/java/io/pivotal/pal/tracker/WelcomeController.java:16: error: ';' expected
+    return  @Value("${WELCOME_MESSAGE}");
+                                         ^
+/home/pal_user/workspace/pal-tracker/src/main/java/io/pivotal/pal/tracker/WelcomeController.java:18: error: reached end of file while parsing
+}
+ ^
+3 errors
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':compileJava'.
+> Compilation failed; see the compiler error output for details.
+
+* Try:
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output. Run with --scan to get full insights.
+
+* Get more help at https://help.gradle.org
+
+BUILD FAILED in 0s
+1 actionable task: 1 executed
+pal_user@explode:~/workspace/pal-tracker$ WELCOME_MESSAGE=hello ./gradlew bootRun
+
+> Task :bootRun
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v1.5.4.RELEASE)
+
+2018-10-29 14:38:27.564  INFO 11236 --- [           main] i.p.pal.tracker.PalTrackerApplication    : Starting PalTrackerApplication on explode with PID 11236 (/home/pal_user/workspace/pal-tracker/build/classes/java/main started by pal_user in /home/pal_user/workspace/pal-tracker)
+2018-10-29 14:38:27.570  INFO 11236 --- [           main] i.p.pal.tracker.PalTrackerApplication    : No active profile set, falling back to default profiles: default
+2018-10-29 14:38:27.684  INFO 11236 --- [           main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@17695df3: startup date [Mon Oct 29 14:38:27 EDT 2018]; root of context hierarchy
+2018-10-29 14:38:28.740  INFO 11236 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8888 (http)
+2018-10-29 14:38:28.749  INFO 11236 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-10-29 14:38:28.750  INFO 11236 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.15
+2018-10-29 14:38:28.813  INFO 11236 --- [ost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-10-29 14:38:28.813  INFO 11236 --- [ost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1136 ms
+2018-10-29 14:38:28.889  INFO 11236 --- [ost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2018-10-29 14:38:28.891  INFO 11236 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-10-29 14:38:28.892  INFO 11236 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-10-29 14:38:28.892  INFO 11236 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-10-29 14:38:28.892  INFO 11236 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-10-29 14:38:29.090  INFO 11236 --- [           main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@17695df3: startup date [Mon Oct 29 14:38:27 EDT 2018]; root of context hierarchy
+2018-10-29 14:38:29.137  INFO 11236 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/],methods=[GET]}" onto public java.lang.String io.pivotal.pal.tracker.WelcomeController.sayHello()
+2018-10-29 14:38:29.139  INFO 11236 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-10-29 14:38:29.140  INFO 11236 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-10-29 14:38:29.163  INFO 11236 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-10-29 14:38:29.163  INFO 11236 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-10-29 14:38:29.188  INFO 11236 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-10-29 14:38:29.307  INFO 11236 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2018-10-29 14:38:29.343  INFO 11236 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8888 (http)
+2018-10-29 14:38:29.348  INFO 11236 --- [           main] i.p.pal.tracker.PalTrackerApplication    : Started PalTrackerApplication in 2.115 seconds (JVM running for 2.409)
+<==========---> 80% EXECUTING [3m 32s]
+> :bootRun
+^Cpal_user@explode:~/workspace/pal-tracker$ WELCOME_MESSAGE=hello ./gradlew bootRun
+
+> Task :bootRun
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v1.5.4.RELEASE)
+
+2018-10-29 14:42:03.380  INFO 11416 --- [           main] i.p.pal.tracker.PalTrackerApplication    : Starting PalTrackerApplication on explode with PID 11416 (/home/pal_user/workspace/pal-tracker/build/classes/java/main started by pal_user in /home/pal_user/workspace/pal-tracker)
+2018-10-29 14:42:03.384  INFO 11416 --- [           main] i.p.pal.tracker.PalTrackerApplication    : No active profile set, falling back to default profiles: default
+2018-10-29 14:42:03.468  INFO 11416 --- [           main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@17695df3: startup date [Mon Oct 29 14:42:03 EDT 2018]; root of context hierarchy
+2018-10-29 14:42:04.611  INFO 11416 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8888 (http)
+2018-10-29 14:42:04.620  INFO 11416 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-10-29 14:42:04.621  INFO 11416 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.15
+2018-10-29 14:42:04.680  INFO 11416 --- [ost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-10-29 14:42:04.681  INFO 11416 --- [ost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1217 ms
+2018-10-29 14:42:04.766  INFO 11416 --- [ost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2018-10-29 14:42:04.768  INFO 11416 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-10-29 14:42:04.769  INFO 11416 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-10-29 14:42:04.769  INFO 11416 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-10-29 14:42:04.769  INFO 11416 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-10-29 14:42:04.989  INFO 11416 --- [           main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@17695df3: startup date [Mon Oct 29 14:42:03 EDT 2018]; root of context hierarchy
+2018-10-29 14:42:05.041  INFO 11416 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/],methods=[GET]}" onto public java.lang.String io.pivotal.pal.tracker.WelcomeController.sayHello()
+2018-10-29 14:42:05.044  INFO 11416 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-10-29 14:42:05.044  INFO 11416 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-10-29 14:42:05.066  INFO 11416 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-10-29 14:42:05.066  INFO 11416 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-10-29 14:42:05.096  INFO 11416 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-10-29 14:42:05.223  INFO 11416 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2018-10-29 14:42:05.274  INFO 11416 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8888 (http)
+2018-10-29 14:42:05.278  INFO 11416 --- [           main] i.p.pal.tracker.PalTrackerApplication    : Started PalTrackerApplication in 2.196 seconds (JVM running for 2.433)
+2018-10-29 14:42:33.499  INFO 11416 --- [nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-10-29 14:42:33.500  INFO 11416 --- [nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2018-10-29 14:42:33.509  INFO 11416 --- [nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 9 ms
+<==========---> 80% EXECUTING [47s]
+> :bootRun
+^Cpal_user@explode:~/workspace/pal-tracker$ WELCOME_MESSAGE=Imad ./gradlew bootRun
+
+> Task :bootRun
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v1.5.4.RELEASE)
+
+2018-10-29 14:43:01.760  INFO 11526 --- [           main] i.p.pal.tracker.PalTrackerApplication    : Starting PalTrackerApplication on explode with PID 11526 (/home/pal_user/workspace/pal-tracker/build/classes/java/main started by pal_user in /home/pal_user/workspace/pal-tracker)
+2018-10-29 14:43:01.766  INFO 11526 --- [           main] i.p.pal.tracker.PalTrackerApplication    : No active profile set, falling back to default profiles: default
+2018-10-29 14:43:01.831  INFO 11526 --- [           main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@17695df3: startup date [Mon Oct 29 14:43:01 EDT 2018]; root of context hierarchy
+2018-10-29 14:43:02.780  INFO 11526 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8888 (http)
+2018-10-29 14:43:02.790  INFO 11526 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-10-29 14:43:02.791  INFO 11526 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.15
+2018-10-29 14:43:02.851  INFO 11526 --- [ost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-10-29 14:43:02.851  INFO 11526 --- [ost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1025 ms
+2018-10-29 14:43:02.939  INFO 11526 --- [ost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2018-10-29 14:43:02.941  INFO 11526 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-10-29 14:43:02.942  INFO 11526 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-10-29 14:43:02.942  INFO 11526 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-10-29 14:43:02.942  INFO 11526 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-10-29 14:43:03.168  INFO 11526 --- [           main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@17695df3: startup date [Mon Oct 29 14:43:01 EDT 2018]; root of context hierarchy
+2018-10-29 14:43:03.230  INFO 11526 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/],methods=[GET]}" onto public java.lang.String io.pivotal.pal.tracker.WelcomeController.sayHello()
+2018-10-29 14:43:03.232  INFO 11526 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-10-29 14:43:03.233  INFO 11526 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-10-29 14:43:03.258  INFO 11526 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-10-29 14:43:03.258  INFO 11526 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-10-29 14:43:03.285  INFO 11526 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-10-29 14:43:03.398  INFO 11526 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2018-10-29 14:43:03.447  INFO 11526 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8888 (http)
+2018-10-29 14:43:03.453  INFO 11526 --- [           main] i.p.pal.tracker.PalTrackerApplication    : Started PalTrackerApplication in 2.065 seconds (JVM running for 2.388)
+2018-10-29 14:43:07.581  INFO 11526 --- [nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-10-29 14:43:07.581  INFO 11526 --- [nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2018-10-29 14:43:07.592  INFO 11526 --- [nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 11 ms
+<==========---> 80% EXECUTING [5m 37s]
+> :bootRun
+^C^Cpal_user@explode:~/workspace/pal-tracker$ ^C
+pal_user@explode:~/workspace/pal-tracker$ ^C
+pal_user@explode:~/workspace/pal-tracker$ ./gradlew test
+
+> Task :compileTestJava FAILED
+/home/pal_user/workspace/pal-tracker/src/test/java/test/pivotal/pal/tracker/EnvControllerTest.java:6: error: cannot find symbol
+import io.pivotal.pal.tracker.EnvController;
+                             ^
+  symbol:   class EnvController
+  location: package io.pivotal.pal.tracker
+/home/pal_user/workspace/pal-tracker/src/test/java/test/pivotal/pal/tracker/EnvControllerTest.java:13: error: cannot find symbol
+        EnvController controller = new EnvController(
+        ^
+  symbol:   class EnvController
+  location: class EnvControllerTest
+/home/pal_user/workspace/pal-tracker/src/test/java/test/pivotal/pal/tracker/EnvControllerTest.java:13: error: cannot find symbol
+        EnvController controller = new EnvController(
+                                       ^
+  symbol:   class EnvController
+  location: class EnvControllerTest
+3 errors
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':compileTestJava'.
+> Compilation failed; see the compiler error output for details.
+
+* Try:
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output. Run with --scan to get full insights.
+
+* Get more help at https://help.gradle.org
+
+BUILD FAILED in 2s
+3 actionable tasks: 1 executed, 2 up-to-date
+pal_user@explode:~/workspace/pal-tracker$ ./gradlew test
+
+> Task :compileTestJava FAILED
+/home/pal_user/workspace/pal-tracker/src/test/java/test/pivotal/pal/tracker/EnvControllerTest.java:3: error: cannot find symbol
+import io.pivotal.pal.tracker.EnvController;
+                             ^
+  symbol:   class EnvController
+  location: package io.pivotal.pal.tracker
+/home/pal_user/workspace/pal-tracker/src/test/java/test/pivotal/pal/tracker/EnvControllerTest.java:13: error: cannot find symbol
+        EnvController controller = new EnvController(
+        ^
+  symbol:   class EnvController
+  location: class EnvControllerTest
+/home/pal_user/workspace/pal-tracker/src/test/java/test/pivotal/pal/tracker/EnvControllerTest.java:13: error: cannot find symbol
+        EnvController controller = new EnvController(
+                                       ^
+  symbol:   class EnvController
+  location: class EnvControllerTest
+3 errors
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':compileTestJava'.
+> Compilation failed; see the compiler error output for details.
+
+* Try:
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output. Run with --scan to get full insights.
+
+* Get more help at https://help.gradle.org
+
+BUILD FAILED in 1s
+3 actionable tasks: 1 executed, 2 up-to-date
+pal_user@explode:~/workspace/pal-tracker$ cf push -p build/libs/pal-tracker.jar pal-tracker --random-route
+Pushing app pal-tracker to org imad-quadri / space sandbox as squadri@ford.com...
+Getting app info...
+Updating app with these attributes...
+  name:                pal-tracker
+  path:                /home/pal_user/workspace/pal-tracker/build/libs/pal-tracker.jar
+  command:             JAVA_OPTS="-agentpath:$PWD/.java-buildpack/open_jdk_jre/bin/jvmkill-1.12.0_RELEASE=printHeapHistogram=1 -Djava.io.tmpdir=$TMPDIR -Djava.ext.dirs=$PWD/.java-buildpack/container_security_provider:$PWD/.java-buildpack/open_jdk_jre/lib/ext -Djava.security.properties=$PWD/.java-buildpack/java_security/java.security $JAVA_OPTS" && CALCULATED_MEMORY=$($PWD/.java-buildpack/open_jdk_jre/bin/java-buildpack-memory-calculator-3.10.0_RELEASE -totMemory=$MEMORY_LIMIT -stackThreads=250 -loadedClasses=13548 -poolType=metaspace -vmOptions="$JAVA_OPTS") && echo JVM Memory Configuration: $CALCULATED_MEMORY && JAVA_OPTS="$JAVA_OPTS $CALCULATED_MEMORY" && SERVER_PORT=$PORT eval exec $PWD/.java-buildpack/open_jdk_jre/bin/java $JAVA_OPTS -cp $PWD/. org.springframework.boot.loader.JarLauncher
+  disk quota:          1G
+  health check type:   port
+  instances:           1
+  memory:              1G
+  stack:               cflinuxfs2
+  routes:
+    pal-tracker-optimistic-hyrax.apps.pikes.pal.pivotal.io
+
+Updating app pal-tracker...
+Mapping routes...
+Comparing local files to remote cache...
+Packaging files to upload...
+Uploading files...
+ 316.54 KiB / 316.54 KiB [==================================================================================================================================] 100.00% 2s
+
+Waiting for API to complete processing files...
+timeout connecting to log server, no log will be shown
+
+
+Stopping app...
+
+Staging app and tracing logs...
+
+Waiting for app to start...
+Start unsuccessful
+
+TIP: use 'cf logs pal-tracker --recent' for more information
+FAILED
+pal_user@explode:~/workspace/pal-tracker$ cf logs
+Incorrect Usage: the required argument `APP_NAME` was not provided
+
+NAME:
+   logs - Tail or show recent logs for an app
+
+USAGE:
+   cf logs APP_NAME
+
+OPTIONS:
+   --recent      Dump recent logs instead of tailing
+
+SEE ALSO:
+   app, apps, ssh
+pal_user@explode:~/workspace/pal-tracker$ cf logs 
+Incorrect Usage: the required argument `APP_NAME` was not provided
+
+NAME:
+   logs - Tail or show recent logs for an app
+
+USAGE:
+   cf logs APP_NAME
+
+OPTIONS:
+   --recent      Dump recent logs instead of tailing
+
+SEE ALSO:
+   app, apps, ssh
+pal_user@explode:~/workspace/pal-tracker$ cf apps
+Getting apps in org imad-quadri / space sandbox as squadri@ford.com...
+OK
+
+name          requested state   instances   memory   disk   urls
+pal-tracker   started           0/1         1G       1G     pal-tracker-optimistic-hyrax.apps.pikes.pal.pivotal.io
+pal_user@explode:~/workspace/pal-tracker$ cf logs pal-tracker
+^C
+pal_user@explode:~/workspace/pal-tracker$ cf logs pal-tracker --recent
+Retrieving logs for app pal-tracker in org imad-quadri / space sandbox as squadri@ford.com...
+
+Error dialing trafficcontroller server: Get https://doppler.sys.pikes.pal.pivotal.io:443/apps/4444b8ad-9d81-488d-ba0a-eca4d5f8e735/recentlogs: x509: certificate signed by unknown authority.
+Please ask your Cloud Foundry Operator to check the platform configuration (trafficcontroller endpoint is wss://doppler.sys.pikes.pal.pivotal.io:443).
+FAILED
+pal_user@explode:~/workspace/pal-tracker$ cf logs --recent
+Incorrect Usage: the required argument `APP_NAME` was not provided
+
+NAME:
+   logs - Tail or show recent logs for an app
+
+USAGE:
+   cf logs APP_NAME
+
+OPTIONS:
+   --recent      Dump recent logs instead of tailing
+
+SEE ALSO:
+   app, apps, ssh
+pal_user@explode:~/workspace/pal-tracker$ cf logs pal-tracker --recent
+Retrieving logs for app pal-tracker in org imad-quadri / space sandbox as squadri@ford.com...
+
+Error dialing trafficcontroller server: Get https://doppler.sys.pikes.pal.pivotal.io:443/apps/4444b8ad-9d81-488d-ba0a-eca4d5f8e735/recentlogs: x509: certificate signed by unknown authority.
+Please ask your Cloud Foundry Operator to check the platform configuration (trafficcontroller endpoint is wss://doppler.sys.pikes.pal.pivotal.io:443).
+FAILED
+pal_user@explode:~/workspace/pal-tracker$ cf logs pal-tracker --recent^C
+pal_user@explode:~/workspace/pal-tracker$ cf logs -help
+NAME:
+   logs - Tail or show recent logs for an app
+
+USAGE:
+   cf logs APP_NAME
+
+OPTIONS:
+   --recent      Dump recent logs instead of tailing
+
+SEE ALSO:
+   app, apps, ssh
+pal_user@explode:~/workspace/pal-tracker$ cf logs --help
+NAME:
+   logs - Tail or show recent logs for an app
+
+USAGE:
+   cf logs APP_NAME
+
+OPTIONS:
+   --recent      Dump recent logs instead of tailing
+
+SEE ALSO:
+   app, apps, ssh
+pal_user@explode:~/workspace/pal-tracker$ cf logs pal-tracker --recent
+Retrieving logs for app pal-tracker in org imad-quadri / space sandbox as squadri@ford.com...
+
+Error dialing trafficcontroller server: Get https://doppler.sys.pikes.pal.pivotal.io:443/apps/4444b8ad-9d81-488d-ba0a-eca4d5f8e735/recentlogs: x509: certificate signed by unknown authority.
+Please ask your Cloud Foundry Operator to check the platform configuration (trafficcontroller endpoint is wss://doppler.sys.pikes.pal.pivotal.io:443).
+FAILED
+pal_user@explode:~/workspace/pal-tracker$ cf logoff --help
+FAILED
+'logoff' is not a registered command. See 'cf help -a'
+pal_user@explode:~/workspace/pal-tracker$ cf logoff
+'logoff' is not a registered command. See 'cf help -a'
+pal_user@explode:~/workspace/pal-tracker$ cf logout
+Logging out squadri@ford.com...
+OK
+pal_user@explode:~/workspace/pal-tracker$ cf login -a --skip-ssl-validation
+Incorrect Usage: expected argument for flag `-a', but got option `--skip-ssl-validation'
+
+NAME:
+   login - Log user in
+
+USAGE:
+   cf login [-a API_URL] [-u USERNAME] [-p PASSWORD] [-o ORG] [-s SPACE] [--sso | --sso-passcode PASSCODE]
+
+WARNING:
+   Providing your password as a command line option is highly discouraged
+   Your password may be visible to others and may be recorded in your shell history
+
+EXAMPLES:
+   cf login (omit username and password to login interactively -- cf will prompt for both)
+   cf login -u name@example.com -p pa55woRD (specify username and password as arguments)
+   cf login -u name@example.com -p "my password" (use quotes for passwords with a space)
+   cf login -u name@example.com -p "\"password\"" (escape quotes if used in password)
+   cf login --sso (cf will provide a url to obtain a one-time passcode to login)
+
+ALIAS:
+   l
+
+OPTIONS:
+   -a                         API endpoint (e.g. https://api.example.com)
+   -o                         Org
+   -p                         Password
+   -s                         Space
+   --skip-ssl-validation      Skip verification of the API endpoint. Not recommended!
+   --sso                      Prompt for a one-time passcode to login
+   --sso-passcode             One-time passcode
+   -u                         Username
+
+SEE ALSO:
+   api, auth, target
+pal_user@explode:~/workspace/pal-tracker$ cf login -a pal-tracker --skip-ssl-validation
+API endpoint: pal-tracker
+FAILED
+Error performing request: Get https://pal-tracker/v2/info: dial tcp: lookup pal-tracker on 127.0.0.53:53: server misbehaving
+TIP: If you are behind a firewall and require an HTTP proxy, verify the https_proxy environment variable is correctly set. Else, check your network connection.
+pal_user@explode:~/workspace/pal-tracker$ cf login -a --skip-ssl-validation
+Incorrect Usage: expected argument for flag `-a', but got option `--skip-ssl-validation'
+
+NAME:
+   login - Log user in
+
+USAGE:
+   cf login [-a API_URL] [-u USERNAME] [-p PASSWORD] [-o ORG] [-s SPACE] [--sso | --sso-passcode PASSCODE]
+
+WARNING:
+   Providing your password as a command line option is highly discouraged
+   Your password may be visible to others and may be recorded in your shell history
+
+EXAMPLES:
+   cf login (omit username and password to login interactively -- cf will prompt for both)
+   cf login -u name@example.com -p pa55woRD (specify username and password as arguments)
+   cf login -u name@example.com -p "my password" (use quotes for passwords with a space)
+   cf login -u name@example.com -p "\"password\"" (escape quotes if used in password)
+   cf login --sso (cf will provide a url to obtain a one-time passcode to login)
+
+ALIAS:
+   l
+
+OPTIONS:
+   -a                         API endpoint (e.g. https://api.example.com)
+   -o                         Org
+   -p                         Password
+   -s                         Space
+   --skip-ssl-validation      Skip verification of the API endpoint. Not recommended!
+   --sso                      Prompt for a one-time passcode to login
+   --sso-passcode             One-time passcode
+   -u                         Username
+
+SEE ALSO:
+   api, auth, target
+pal_user@explode:~/workspace/pal-tracker$ cf login -a https://api-sys.pikes.pal.pivotal.io --skip-ssl-validation
+API endpoint: https://api-sys.pikes.pal.pivotal.io
+FAILED
+Error performing request: Get https://api-sys.pikes.pal.pivotal.io/v2/info: dial tcp: lookup api-sys.pikes.pal.pivotal.io on 127.0.0.53:53: no such host
+TIP: If you are behind a firewall and require an HTTP proxy, verify the https_proxy environment variable is correctly set. Else, check your network connection.
+pal_user@explode:~/workspace/pal-tracker$ cf login -a https://api.sys.pikes.pal.pivotal.io --skip-ssl-validation
+API endpoint: https://api.sys.pikes.pal.pivotal.io
+
+Email> squadri@ford.com
+
+Password> 
+Authenticating...
+
+Credentials were rejected, please try again.
+
+Password> 
+Authenticating...
+Credentials were rejected, please try again.
+
+Password> 
+Authenticating...
+Credentials were rejected, please try again.
+
+                
+API endpoint:   https://api.sys.pikes.pal.pivotal.io (API version: 2.103.0)
+Not logged in. Use 'cf login' to log in.
+FAILED
+Unable to authenticate.
+pal_user@explode:~/workspace/pal-tracker$ cf login -a https://api.sys.pikes.pal.pivotal.io --skip-ssl-validation
+API endpoint: https://api.sys.pikes.pal.pivotal.io
+
+Email> squadri@ford.com
+
+Password> 
+Authenticating...
+Credentials were rejected, please try again.
+
+Password> 
+Authenticating...
+OK
+
+Targeted org imad-quadri
+
+Targeted space sandbox
+
+
+                
+API endpoint:   https://api.sys.pikes.pal.pivotal.io (API version: 2.103.0)
+User:           squadri@ford.com
+Org:            imad-quadri
+Space:          sandbox
+pal_user@explode:~/workspace/pal-tracker$ cf logs pal-tracker --recent
+Retrieving logs for app pal-tracker in org imad-quadri / space sandbox as squadri@ford.com...
+
+   2018-10-29T15:16:03.52-0400 [API/0] OUT Updated app with guid 4444b8ad-9d81-488d-ba0a-eca4d5f8e735 ({"buildpack"=>"", "disk_quota"=>1024, "health_check_http_endpoint"=>"", "health_check_type"=>"port", "instances"=>1, "memory"=>1024, "name"=>"pal-tracker", "space_guid"=>"cf67a4d4-ca0e-4db6-af58-9bd711351936"})
+   2018-10-29T15:16:05.64-0400 [API/0] OUT Uploading bits for app with guid 4444b8ad-9d81-488d-ba0a-eca4d5f8e735
+   2018-10-29T15:16:13.88-0400 [API/1] OUT Updated app with guid 4444b8ad-9d81-488d-ba0a-eca4d5f8e735 ({"state"=>"STOPPED"})
+   2018-10-29T15:16:14.83-0400 [API/0] OUT Creating build for app with guid 4444b8ad-9d81-488d-ba0a-eca4d5f8e735
+   2018-10-29T15:16:14.99-0400 [API/0] OUT Updated app with guid 4444b8ad-9d81-488d-ba0a-eca4d5f8e735 ({"state"=>"STARTED"})
+  
+pal_user@explode:~/workspace/pal-tracker$ git remote -v
+origin	https://github.com/DocumentManagementTeam/pivtollab.git (fetch)
+origin	https://github.com/DocumentManagementTeam/pivtollab.git (push)
+pal_user@explode:~/workspace/pal-tracker$ git remote add other -v origin ^C
+pal_user@explode:~/workspace/pal-tracker$ git remote add other origin https://github.com/manoj79k/Lab1.git
+usage: git remote add [<options>] <name> <url>
+
+    -f, --fetch           fetch the remote branches
+    --tags                import all tags and associated objects when fetching
+                          or do not fetch any tag at all (--no-tags)
+    -t, --track <branch>  branch(es) to track
+    -m, --master <branch>
+                          master branch
+    --mirror[=<push|fetch>]
+                          set up remote as a mirror to push to or fetch from
+
+pal_user@explode:~/workspace/pal-tracker$ git remote add other -v origin https://github.com/manoj79k/Lab1.git
+error: unknown switch `v'
+usage: git remote add [<options>] <name> <url>
+
+    -f, --fetch           fetch the remote branches
+    --tags                import all tags and associated objects when fetching
+                          or do not fetch any tag at all (--no-tags)
+    -t, --track <branch>  branch(es) to track
+    -m, --master <branch>
+                          master branch
+    --mirror[=<push|fetch>]
+                          set up remote as a mirror to push to or fetch from
+
+pal_user@explode:~/workspace/pal-tracker$ git remote add other origin https://github.com/manoj79k/Lab1.git
+usage: git remote add [<options>] <name> <url>
+
+    -f, --fetch           fetch the remote branches
+    --tags                import all tags and associated objects when fetching
+                          or do not fetch any tag at all (--no-tags)
+    -t, --track <branch>  branch(es) to track
+    -m, --master <branch>
+                          master branch
+    --mirror[=<push|fetch>]
+                          set up remote as a mirror to push to or fetch from
+
+pal_user@explode:~/workspace/pal-tracker$ git remote add other origin https://github.com/manoj79k/Lab1.git^C
+pal_user@explode:~/workspace/pal-tracker$ cf  set-env --help 
+NAME:
+   set-env - Set an env variable for an app
+
+USAGE:
+   cf set-env APP_NAME ENV_VAR_NAME ENV_VAR_VALUE
+
+ALIAS:
+   se
+
+SEE ALSO:
+   apps, env, restart, set-running-environment-variable-group, set-staging-environment-variable-group, unset-env
+pal_user@explode:~/workspace/pal-tracker$ cf  set-env pal-tracker WELCOME_MESSAGE='Imad testing from Cf'
+Incorrect Usage: the required argument `ENV_VAR_VALUE` was not provided
+
+NAME:
+   set-env - Set an env variable for an app
+
+USAGE:
+   cf set-env APP_NAME ENV_VAR_NAME ENV_VAR_VALUE
+
+ALIAS:
+   se
+
+SEE ALSO:
+   apps, env, restart, set-running-environment-variable-group, set-staging-environment-variable-group, unset-env
+pal_user@explode:~/workspace/pal-tracker$ cf  set-env pal-tracker WELCOME_MESSAGE="Imad testing from Cf"
+Incorrect Usage: the required argument `ENV_VAR_VALUE` was not provided
+
+NAME:
+   set-env - Set an env variable for an app
+
+USAGE:
+   cf set-env APP_NAME ENV_VAR_NAME ENV_VAR_VALUE
+
+ALIAS:
+   se
+
+SEE ALSO:
+   apps, env, restart, set-running-environment-variable-group, set-staging-environment-variable-group, unset-env
+pal_user@explode:~/workspace/pal-tracker$ cf  set-env pal-tracker WELCOME_MESSAGE=Imad testing from Cf
+FAILED
+Incorrect Usage. Requires 'app-name env-name env-value' as arguments
+
+NAME:
+   set-env - Set an env variable for an app
+
+USAGE:
+   cf set-env APP_NAME ENV_VAR_NAME ENV_VAR_VALUE
+
+ALIAS:
+   se
+
+pal_user@explode:~/workspace/pal-tracker$ cf set-env pal-tracker WELCOME_MESSAGE 'Imad testing from Cf'
+Setting env variable 'WELCOME_MESSAGE' to 'Imad testing from Cf' for app pal-tracker in org imad-quadri / space sandbox as squadri@ford.com...
+OK
+TIP: Use 'cf restage pal-tracker' to ensure your env variable changes take effect
+pal_user@explode:~/workspace/pal-tracker$ cf set-env pal-tracker WELCOME_MESSAGE 'Imad testing from Cf^C
+pal_user@explode:~/workspace/pal-tracker$ cf restage pal-tracker
+Restaging app pal-tracker in org imad-quadri / space sandbox as squadri@ford.com...
+
+Staging app and tracing logs...
+   Downloading binary_buildpack...
+   Downloading java_buildpack_offline...
+   Downloading nodejs_buildpack...
+   Downloading ruby_buildpack...
+   Downloading go_buildpack...
+   Downloaded binary_buildpack
+   Downloading python_buildpack...
+   Downloaded nodejs_buildpack
+   Downloading php_buildpack...
+   Downloaded go_buildpack
+   Downloading dotnet_core_buildpack...
+   Downloaded ruby_buildpack
+   Downloading staticfile_buildpack...
+   Downloaded java_buildpack_offline
+   Downloaded staticfile_buildpack
+   Downloaded python_buildpack
+   Downloaded dotnet_core_buildpack
+   Downloaded php_buildpack
+   Creating container
+   Successfully created container
+   Downloading build artifacts cache...
+   Downloading app package...
+   Downloaded build artifacts cache (129B)
+   Downloaded app package (12.3M)
+   -----> Java Buildpack v4.8 (offline) | https://github.com/cloudfoundry/java-buildpack.git#9f97630
+   -----> Downloading Jvmkill Agent 1.12.0_RELEASE from https://java-buildpack.cloudfoundry.org/jvmkill/trusty/x86_64/jvmkill-1.12.0_RELEASE.so (found in cache)
+   -----> Downloading Open Jdk JRE 1.8.0_162 from https://java-buildpack.cloudfoundry.org/openjdk/trusty/x86_64/openjdk-1.8.0_162.tar.gz (found in cache)
+          Expanding Open Jdk JRE to .java-buildpack/open_jdk_jre (1.0s)
+          JVM DNS caching disabled in lieu of BOSH DNS caching
+   -----> Downloading Open JDK Like Memory Calculator 3.10.0_RELEASE from https://java-buildpack.cloudfoundry.org/memory-calculator/trusty/x86_64/memory-calculator-3.10.0_RELEASE.tar.gz (found in cache)
+          Loaded Classes: 12840, Threads: 250
+   -----> Downloading Client Certificate Mapper 1.5.0_RELEASE from https://java-buildpack.cloudfoundry.org/client-certificate-mapper/client-certificate-mapper-1.5.0_RELEASE.jar (found in cache)
+   -----> Downloading Container Security Provider 1.11.0_RELEASE from https://java-buildpack.cloudfoundry.org/container-security-provider/container-security-provider-1.11.0_RELEASE.jar (found in cache)
+   -----> Downloading Spring Auto Reconfiguration 2.3.0_RELEASE from https://java-buildpack.cloudfoundry.org/auto-reconfiguration/auto-reconfiguration-2.3.0_RELEASE.jar (found in cache)
+   Exit status 0
+   Uploading droplet, build artifacts cache...
+   Uploading build artifacts cache...
+   Uploading droplet...
+   Uploaded build artifacts cache (129B)
+   Uploaded droplet (58.5M)
+   Uploading complete
+   Stopping instance ab7f51ac-277c-4555-9826-2b81ebee24f0
+   Destroying container
+   Successfully destroyed container
+
+Waiting for app to start...
+
+name:              pal-tracker
+requested state:   started
+routes:            pal-tracker-optimistic-hyrax.apps.pikes.pal.pivotal.io
+last uploaded:     Mon 29 Oct 15:49:58 EDT 2018
+stack:             cflinuxfs2
+buildpacks:        client-certificate-mapper=1.5.0_RELEASE container-security-provider=1.11.0_RELEASE
+                   java-buildpack=v4.8-offline-https://github.com/cloudfoundry/java-buildpack.git#9f97630 java-main java-opts java-security
+                   jvmkill-agent=1.12.0_RELEASE open-jdk-l...
+
+type:            web
+instances:       1/1
+memory usage:    1024M
+start command:   JAVA_OPTS="-agentpath:$PWD/.java-buildpack/open_jdk_jre/bin/jvmkill-1.12.0_RELEASE=printHeapHistogram=1 -Djava.io.tmpdir=$TMPDIR
+                 -Djava.ext.dirs=$PWD/.java-buildpack/container_security_provider:$PWD/.java-buildpack/open_jdk_jre/lib/ext
+                 -Djava.security.properties=$PWD/.java-buildpack/java_security/java.security $JAVA_OPTS" &&
+                 CALCULATED_MEMORY=$($PWD/.java-buildpack/open_jdk_jre/bin/java-buildpack-memory-calculator-3.10.0_RELEASE -totMemory=$MEMORY_LIMIT -stackThreads=250
+                 -loadedClasses=13548 -poolType=metaspace -vmOptions="$JAVA_OPTS") && echo JVM Memory Configuration: $CALCULATED_MEMORY && JAVA_OPTS="$JAVA_OPTS
+                 $CALCULATED_MEMORY" && SERVER_PORT=$PORT eval exec $PWD/.java-buildpack/open_jdk_jre/bin/java $JAVA_OPTS -cp $PWD/.
+                 org.springframework.boot.loader.JarLauncher
+     state     since                  cpu    memory      disk       details
+#0   running   2018-10-29T19:50:12Z   0.0%   44K of 1G   8K of 1G   
+pal_user@explode:~/workspace/pal-tracker$ cf apps
+Getting apps in org imad-quadri / space sandbox as squadri@ford.com...
+OK
+
+name          requested state   instances   memory   disk   urls
+pal-tracker   started           1/1         1G       1G     pal-tracker-optimistic-hyrax.apps.pikes.pal.pivotal.io
+pal_user@explode:~/workspace/pal-tracker$ cf scale --help
+NAME:
+   scale - Change or view the instance count, disk space limit, and memory limit for an app
+
+USAGE:
+   cf scale APP_NAME [-i INSTANCES] [-k DISK] [-m MEMORY] [-f]
+
+OPTIONS:
+   -f      Force restart of app without prompt
+   -i      Number of instances
+   -k      Disk limit (e.g. 256M, 1024M, 1G)
+   -m      Memory limit (e.g. 256M, 1024M, 1G)
+
+SEE ALSO:
+   push
+pal_user@explode:~/workspace/pal-tracker$ cf scale pal-tracker -i 2
+Scaling app pal-tracker in org imad-quadri / space sandbox as squadri@ford.com...
+OK
+pal_user@explode:~/workspace/pal-tracker$ cf apps
+Getting apps in org imad-quadri / space sandbox as squadri@ford.com...
+OK
+
+name          requested state   instances   memory   disk   urls
+pal-tracker   started           2/2         1G       1G     pal-tracker-optimistic-hyrax.apps.pikes.pal.pivotal.io
+pal_user@explode:~/workspace/pal-tracker$ cf scale pal-tracker -i 1
+Scaling app pal-tracker in org imad-quadri / space sandbox as squadri@ford.com...
+OK
+pal_user@explode:~/workspace/pal-tracker$ cf apps
+Getting apps in org imad-quadri / space sandbox as squadri@ford.com...
+OK
+
+name          requested state   instances   memory   disk   urls
+pal-tracker   started           1/1         1G       1G     pal-tracker-optimistic-hyrax.apps.pikes.pal.pivotal.io
+pal_user@explode:~/workspace/pal-tracker$ cf set-env pal-tracker WELCOME_MESSAGE 'hello'
+Setting env variable 'WELCOME_MESSAGE' to 'hello' for app pal-tracker in org imad-quadri / space sandbox as squadri@ford.com...
+OK
+TIP: Use 'cf restage pal-tracker' to ensure your env variable changes take effect
+pal_user@explode:~/workspace/pal-tracker$ cf restage pal-tracker
+Restaging app pal-tracker in org imad-quadri / space sandbox as squadri@ford.com...
+
+Staging app and tracing logs...
+   Downloading binary_buildpack...
+   Downloading staticfile_buildpack...
+   Downloading php_buildpack...
+   Downloading go_buildpack...
+   Downloading java_buildpack_offline...
+   Downloaded go_buildpack
+   Downloading dotnet_core_buildpack...
+   Downloaded java_buildpack_offline
+   Downloading python_buildpack...
+   Downloaded staticfile_buildpack
+   Downloaded binary_buildpack
+   Downloaded php_buildpack
+   Downloading nodejs_buildpack...
+   Downloading ruby_buildpack...
+   Downloaded ruby_buildpack
+   Downloaded nodejs_buildpack
+   Downloaded dotnet_core_buildpack
+   Downloaded python_buildpack
+   Creating container
+   Successfully created container
+   Downloading build artifacts cache...
+   Downloading app package...
+   Downloaded build artifacts cache (129B)
+   Downloaded app package (12.3M)
+   -----> Java Buildpack v4.8 (offline) | https://github.com/cloudfoundry/java-buildpack.git#9f97630
+   -----> Downloading Jvmkill Agent 1.12.0_RELEASE from https://java-buildpack.cloudfoundry.org/jvmkill/trusty/x86_64/jvmkill-1.12.0_RELEASE.so (found in cache)
+   -----> Downloading Open Jdk JRE 1.8.0_162 from https://java-buildpack.cloudfoundry.org/openjdk/trusty/x86_64/openjdk-1.8.0_162.tar.gz (found in cache)
+          Expanding Open Jdk JRE to .java-buildpack/open_jdk_jre (1.2s)
+          JVM DNS caching disabled in lieu of BOSH DNS caching
+   -----> Downloading Open JDK Like Memory Calculator 3.10.0_RELEASE from https://java-buildpack.cloudfoundry.org/memory-calculator/trusty/x86_64/memory-calculator-3.10.0_RELEASE.tar.gz (found in cache)
+          Loaded Classes: 12840, Threads: 250
+   -----> Downloading Client Certificate Mapper 1.5.0_RELEASE from https://java-buildpack.cloudfoundry.org/client-certificate-mapper/client-certificate-mapper-1.5.0_RELEASE.jar (found in cache)
+   -----> Downloading Container Security Provider 1.11.0_RELEASE from https://java-buildpack.cloudfoundry.org/container-security-provider/container-security-provider-1.11.0_RELEASE.jar (found in cache)
+   -----> Downloading Spring Auto Reconfiguration 2.3.0_RELEASE from https://java-buildpack.cloudfoundry.org/auto-reconfiguration/auto-reconfiguration-2.3.0_RELEASE.jar (found in cache)
+   Exit status 0
+   Uploading droplet, build artifacts cache...
+   Uploading build artifacts cache...
+   Uploading droplet...
+   Uploaded build artifacts cache (129B)
+   Uploaded droplet (58.5M)
+   Uploading complete
+   Stopping instance 2599d631-b323-4e20-8f83-6e8077c0833b
+   Destroying container
+   Successfully destroyed container
+
+Waiting for app to start...
+
+name:              pal-tracker
+requested state:   started
+routes:            pal-tracker-optimistic-hyrax.apps.pikes.pal.pivotal.io
+last uploaded:     Mon 29 Oct 15:56:59 EDT 2018
+stack:             cflinuxfs2
+buildpacks:        client-certificate-mapper=1.5.0_RELEASE container-security-provider=1.11.0_RELEASE
+                   java-buildpack=v4.8-offline-https://github.com/cloudfoundry/java-buildpack.git#9f97630 java-main java-opts java-security
+                   jvmkill-agent=1.12.0_RELEASE open-jdk-l...
+
+type:            web
+instances:       1/1
+memory usage:    1024M
+start command:   JAVA_OPTS="-agentpath:$PWD/.java-buildpack/open_jdk_jre/bin/jvmkill-1.12.0_RELEASE=printHeapHistogram=1 -Djava.io.tmpdir=$TMPDIR
+                 -Djava.ext.dirs=$PWD/.java-buildpack/container_security_provider:$PWD/.java-buildpack/open_jdk_jre/lib/ext
+                 -Djava.security.properties=$PWD/.java-buildpack/java_security/java.security $JAVA_OPTS" &&
+                 CALCULATED_MEMORY=$($PWD/.java-buildpack/open_jdk_jre/bin/java-buildpack-memory-calculator-3.10.0_RELEASE -totMemory=$MEMORY_LIMIT -stackThreads=250
+                 -loadedClasses=13548 -poolType=metaspace -vmOptions="$JAVA_OPTS") && echo JVM Memory Configuration: $CALCULATED_MEMORY && JAVA_OPTS="$JAVA_OPTS
+                 $CALCULATED_MEMORY" && SERVER_PORT=$PORT eval exec $PWD/.java-buildpack/open_jdk_jre/bin/java $JAVA_OPTS -cp $PWD/.
+                 org.springframework.boot.loader.JarLauncher
+     state     since                  cpu    memory         disk           details
+#0   running   2018-10-29T19:57:12Z   0.0%   276.1M of 1G   137.5M of 1G   
+pal_user@explode:~/workspace/pal-tracker$ cf scale --help
+NAME:
+   scale - Change or view the instance count, disk space limit, and memory limit for an app
+
+USAGE:
+   cf scale APP_NAME [-i INSTANCES] [-k DISK] [-m MEMORY] [-f]
+
+OPTIONS:
+   -f      Force restart of app without prompt
+   -i      Number of instances
+   -k      Disk limit (e.g. 256M, 1024M, 1G)
+   -m      Memory limit (e.g. 256M, 1024M, 1G)
+
+SEE ALSO:
+   push
+pal_user@explode:~/workspace/pal-tracker$ cf scale pal-tracker -m ^C
+pal_user@explode:~/workspace/pal-tracker$ cf scale pal-tracker -m 2G
+
+This will cause the app to restart. Are you sure you want to scale pal-tracker?> yes
+
+Scaling app pal-tracker in org imad-quadri / space sandbox as squadri@ford.com...
+OK
+Stopping app pal-tracker in org imad-quadri / space sandbox as squadri@ford.com...
+OK
+
+Starting app pal-tracker in org imad-quadri / space sandbox as squadri@ford.com...
+
+0 of 1 instances running, 1 starting
+0 of 1 instances running, 1 starting
+1 of 1 instances running
+
+App started
+
+
+OK
+
+App pal-tracker was started using this command `JAVA_OPTS="-agentpath:$PWD/.java-buildpack/open_jdk_jre/bin/jvmkill-1.12.0_RELEASE=printHeapHistogram=1 -Djava.io.tmpdir=$TMPDIR -Djava.ext.dirs=$PWD/.java-buildpack/container_security_provider:$PWD/.java-buildpack/open_jdk_jre/lib/ext -Djava.security.properties=$PWD/.java-buildpack/java_security/java.security $JAVA_OPTS" && CALCULATED_MEMORY=$($PWD/.java-buildpack/open_jdk_jre/bin/java-buildpack-memory-calculator-3.10.0_RELEASE -totMemory=$MEMORY_LIMIT -stackThreads=250 -loadedClasses=13548 -poolType=metaspace -vmOptions="$JAVA_OPTS") && echo JVM Memory Configuration: $CALCULATED_MEMORY && JAVA_OPTS="$JAVA_OPTS $CALCULATED_MEMORY" && SERVER_PORT=$PORT eval exec $PWD/.java-buildpack/open_jdk_jre/bin/java $JAVA_OPTS -cp $PWD/. org.springframework.boot.loader.JarLauncher`
+
+Showing health and status for app pal-tracker in org imad-quadri / space sandbox as squadri@ford.com...
+OK
+
+requested state: started
+instances: 1/1
+usage: 2G x 1 instances
+urls: pal-tracker-optimistic-hyrax.apps.pikes.pal.pivotal.io
+last uploaded: Mon Oct 29 19:16:05 UTC 2018
+stack: cflinuxfs2
+buildpack: client-certificate-mapper=1.5.0_RELEASE container-security-provider=1.11.0_RELEASE java-buildpack=v4.8-offline-https://github.com/cloudfoundry/java-buildpack.git#9f97630 java-main java-opts java-security jvmkill-agent=1.12.0_RELEASE open-jdk-l...
+
+     state     since                    cpu    memory         disk           details
+#0   running   2018-10-29 04:01:06 PM   0.0%   436.6M of 2G   137.5M of 1G
+pal_user@explode:~/workspace/pal-tracker$ cf apps
+Getting apps in org imad-quadri / space sandbox as squadri@ford.com...
+OK
+
+name          requested state   instances   memory   disk   urls
+pal-tracker   started           1/1         2G       1G     pal-tracker-optimistic-hyrax.apps.pikes.pal.pivotal.io
+pal_user@explode:~/workspace/pal-tracker$ cf app pal-tracker
+'Showing health and status for app pal-tracker in org imad-quadri / space sandbox as squadri@ford.com...
+
+name:              pal-tracker
+requested state:   started
+routes:            pal-tracker-optimistic-hyrax.apps.pikes.pal.pivotal.io
+last uploaded:     Mon 29 Oct 15:56:59 EDT 2018
+stack:             cflinuxfs2
+buildpacks:        client-certificate-mapper=1.5.0_RELEASE container-security-provider=1.11.0_RELEASE
+                   java-buildpack=v4.8-offline-https://github.com/cloudfoundry/java-buildpack.git#9f97630 java-main java-opts java-security
+                   jvmkill-agent=1.12.0_RELEASE open-jdk-l...
+
+type:           web
+instances:      1/1
+memory usage:   2048M
+     state     since                  cpu    memory         disk           details
+#0   running   2018-10-29T20:01:07Z   0.1%   436.6M of 2G   137.5M of 1G   
+pal_user@explode:~/workspace/pal-tracker$ ls -ltrh
+total 48K
+-rw-r--r-- 1 pal_user pal_user   21 Oct 17 16:29 pal-tracker-codebase.txt
+drwxr-xr-x 3 pal_user pal_user 4.0K Oct 29 11:28 gradle
+-rwxr-xr-x 1 pal_user pal_user 5.2K Oct 29 11:28 gradlew
+-rw-r--r-- 1 pal_user pal_user 2.3K Oct 29 11:28 gradlew.bat
+-rw-r--r-- 1 pal_user pal_user   33 Oct 29 11:42 settings.gradle
+-rw-rw-r-- 1 pal_user pal_user  749 Oct 29 11:44 pal-tracker.iml
+drwxrwxr-x 3 pal_user pal_user 4.0K Oct 29 11:52 out
+drwxrwxr-x 4 pal_user pal_user 4.0K Oct 29 14:29 src
+-rw-r--r-- 1 pal_user pal_user  407 Oct 29 14:45 build.gradle
+drwxrwxr-x 8 pal_user pal_user 4.0K Oct 29 15:10 build
+-rw-rw-r-- 1 pal_user pal_user  190 Oct 29 16:10 manifest.yml
+pal_user@explode:~/workspace/pal-tracker$ cf push
+Pushing from manifest to org imad-quadri / space sandbox as squadri@ford.com...
+Using manifest file /home/pal_user/workspace/pal-tracker/manifest.yml
+Getting app info...
+Updating app with these attributes...
+  name:                pal-tracker
+  path:                /home/pal_user/workspace/pal-tracker/build/libs/pal-tracker.jar
+  command:             JAVA_OPTS="-agentpath:$PWD/.java-buildpack/open_jdk_jre/bin/jvmkill-1.12.0_RELEASE=printHeapHistogram=1 -Djava.io.tmpdir=$TMPDIR -Djava.ext.dirs=$PWD/.java-buildpack/container_security_provider:$PWD/.java-buildpack/open_jdk_jre/lib/ext -Djava.security.properties=$PWD/.java-buildpack/java_security/java.security $JAVA_OPTS" && CALCULATED_MEMORY=$($PWD/.java-buildpack/open_jdk_jre/bin/java-buildpack-memory-calculator-3.10.0_RELEASE -totMemory=$MEMORY_LIMIT -stackThreads=250 -loadedClasses=13548 -poolType=metaspace -vmOptions="$JAVA_OPTS") && echo JVM Memory Configuration: $CALCULATED_MEMORY && JAVA_OPTS="$JAVA_OPTS $CALCULATED_MEMORY" && SERVER_PORT=$PORT eval exec $PWD/.java-buildpack/open_jdk_jre/bin/java $JAVA_OPTS -cp $PWD/. org.springframework.boot.loader.JarLauncher
+  disk quota:          1G
+  health check type:   port
+  instances:           1
+  memory:              2G
+  stack:               cflinuxfs2
+  env:
+-   WELCOME_MESSAGE
++   WELCOME_MESSAGE
+  routes:
++   pal-tracker-aims.apps.pikes.pal.pivotal.io
+    pal-tracker-optimistic-hyrax.apps.pikes.pal.pivotal.io
+
+Updating app pal-tracker...
+Mapping routes...
+Comparing local files to remote cache...
+Packaging files to upload...
+Uploading files...
+ 316.54 KiB / 316.54 KiB [==================================================================================================================================] 100.00% 1s
+
+Waiting for API to complete processing files...
+
+Stopping app...
+
+Staging app and tracing logs...
+   Downloading binary_buildpack...
+   Downloading ruby_buildpack...
+   Downloading staticfile_buildpack...
+   Downloading java_buildpack_offline...
+   Downloading nodejs_buildpack...
+   Downloaded binary_buildpack
+   Downloaded java_buildpack_offline
+   Downloading php_buildpack...
+   Downloaded ruby_buildpack
+   Downloading go_buildpack...
+   Downloaded nodejs_buildpack
+   Downloading python_buildpack...
+   Downloaded staticfile_buildpack
+   Downloading dotnet_core_buildpack...
+   Downloaded php_buildpack
+   Downloaded go_buildpack
+   Downloaded python_buildpack
+   Downloaded dotnet_core_buildpack
+   Creating container
+   Successfully created container
+   Downloading build artifacts cache...
+   Downloading app package...
+   Downloaded build artifacts cache (129B)
+   Downloaded app package (12.3M)
+   -----> Java Buildpack v4.8 (offline) | https://github.com/cloudfoundry/java-buildpack.git#9f97630
+   -----> Downloading Jvmkill Agent 1.12.0_RELEASE from https://java-buildpack.cloudfoundry.org/jvmkill/trusty/x86_64/jvmkill-1.12.0_RELEASE.so (found in cache)
+   -----> Downloading Open Jdk JRE 1.8.0_162 from https://java-buildpack.cloudfoundry.org/openjdk/trusty/x86_64/openjdk-1.8.0_162.tar.gz (found in cache)
+          Expanding Open Jdk JRE to .java-buildpack/open_jdk_jre (0.9s)
+          JVM DNS caching disabled in lieu of BOSH DNS caching
+   -----> Downloading Open JDK Like Memory Calculator 3.10.0_RELEASE from https://java-buildpack.cloudfoundry.org/memory-calculator/trusty/x86_64/memory-calculator-3.10.0_RELEASE.tar.gz (found in cache)
+          Loaded Classes: 12840, Threads: 250
+   -----> Downloading Client Certificate Mapper 1.5.0_RELEASE from https://java-buildpack.cloudfoundry.org/client-certificate-mapper/client-certificate-mapper-1.5.0_RELEASE.jar (found in cache)
+   -----> Downloading Container Security Provider 1.11.0_RELEASE from https://java-buildpack.cloudfoundry.org/container-security-provider/container-security-provider-1.11.0_RELEASE.jar (found in cache)
+   -----> Downloading Spring Auto Reconfiguration 2.3.0_RELEASE from https://java-buildpack.cloudfoundry.org/auto-reconfiguration/auto-reconfiguration-2.3.0_RELEASE.jar (found in cache)
+   Exit status 0
+   Uploading droplet, build artifacts cache...
+   Uploading build artifacts cache...
+   Uploading droplet...
+   Uploaded build artifacts cache (129B)
+   Uploaded droplet (58.5M)
+   Uploading complete
+   Stopping instance f1084b55-b110-4a4c-8db5-023b64148fd3
+   Destroying container
+   Successfully destroyed container
+
+Waiting for app to start...
+
+name:              pal-tracker
+requested state:   started
+routes:            pal-tracker-optimistic-hyrax.apps.pikes.pal.pivotal.io, pal-tracker-aims.apps.pikes.pal.pivotal.io
+last uploaded:     Mon 29 Oct 16:12:05 EDT 2018
+stack:             cflinuxfs2
+buildpacks:        client-certificate-mapper=1.5.0_RELEASE container-security-provider=1.11.0_RELEASE
+                   java-buildpack=v4.8-offline-https://github.com/cloudfoundry/java-buildpack.git#9f97630 java-main java-opts java-security
+                   jvmkill-agent=1.12.0_RELEASE open-jdk-l...
+
+type:            web
+instances:       1/1
+memory usage:    2048M
+start command:   JAVA_OPTS="-agentpath:$PWD/.java-buildpack/open_jdk_jre/bin/jvmkill-1.12.0_RELEASE=printHeapHistogram=1 -Djava.io.tmpdir=$TMPDIR
+                 -Djava.ext.dirs=$PWD/.java-buildpack/container_security_provider:$PWD/.java-buildpack/open_jdk_jre/lib/ext
+                 -Djava.security.properties=$PWD/.java-buildpack/java_security/java.security $JAVA_OPTS" &&
+                 CALCULATED_MEMORY=$($PWD/.java-buildpack/open_jdk_jre/bin/java-buildpack-memory-calculator-3.10.0_RELEASE -totMemory=$MEMORY_LIMIT -stackThreads=250
+                 -loadedClasses=13548 -poolType=metaspace -vmOptions="$JAVA_OPTS") && echo JVM Memory Configuration: $CALCULATED_MEMORY && JAVA_OPTS="$JAVA_OPTS
+                 $CALCULATED_MEMORY" && SERVER_PORT=$PORT eval exec $PWD/.java-buildpack/open_jdk_jre/bin/java $JAVA_OPTS -cp $PWD/.
+                 org.springframework.boot.loader.JarLauncher
+     state     since                  cpu    memory         disk           details
+#0   running   2018-10-29T20:12:18Z   0.0%   359.3M of 2G   137.5M of 1G   
+
+pal_user@explode:~/workspace/pal-tracker$ cf apps
+Getting apps in org imad-quadri / space sandbox as squadri@ford.com...
+OK
+
+name          requested state   instances   memory   disk   urls
+pal-tracker   started           1/1         2G       1G     pal-tracker-optimistic-hyrax.apps.pikes.pal.pivotal.io, pal-tracker-aims.apps.pikes.pal.pivotal.io
+pal_user@explode:~/workspace/pal-tracker$ /gradlew cloudNativeDeveloperCloudFoundry -PserverUrl=https://${APP_URL}^C
+pal_user@explode:~/workspace/pal-tracker$ cf apps
+Getting apps in org imad-quadri / space sandbox as squadri@ford.com...
+OK
+
+name          requested state   instances   memory   disk   urls
+pal-tracker   started           1/1         2G       1G     pal-tracker-optimistic-hyrax.apps.pikes.pal.pivotal.io, pal-tracker-aims.apps.pikes.pal.pivotal.io
+pal_user@explode:~/workspace/pal-tracker$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	new file:   manifest.yml
+	new file:   src/main/java/io/pivotal/pal/tracker/EnvController.java
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   build.gradle
+	modified:   gradle/wrapper/gradle-wrapper.properties
+	modified:   manifest.yml
+	modified:   src/main/java/io/pivotal/pal/tracker/EnvController.java
+	modified:   src/main/java/io/pivotal/pal/tracker/WelcomeController.java
+	modified:   src/test/java/test/pivotal/pal/tracker/EnvControllerTest.java
+
+pal_user@explode:~/workspace/pal-tracker$ git add .
+pal_user@explode:~/workspace/pal-tracker$ git commit -m "Manifest files"
+[master 8b39fb0] Manifest files
+ 6 files changed, 73 insertions(+), 4 deletions(-)
+ create mode 100644 manifest.yml
+ create mode 100644 src/main/java/io/pivotal/pal/tracker/EnvController.java
+pal_user@explode:~/workspace/pal-tracker$ git push
+fatal: The current branch master has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin master
+
+pal_user@explode:~/workspace/pal-tracker$ git push origin master
+Username for 'https://github.com': squadri@ford.com
+Password for 'https://squadri@ford.com@github.com': 
+Counting objects: 36, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (22/22), done.
+Writing objects: 100% (36/36), 3.92 KiB | 401.00 KiB/s, done.
+Total 36 (delta 6), reused 8 (delta 0)
+remote: Resolving deltas: 100% (6/6), completed with 3 local objects.
+To https://github.com/DocumentManagementTeam/pivtollab.git
+   ec5884b..8b39fb0  master -> master
+pal_user@explode:~/workspace/pal-tracker$ 
+
