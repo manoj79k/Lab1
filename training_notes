@@ -58,3 +58,5 @@ OPTIONS:
 
 cf app pal-tracker
 
+git push origin other
+git remote add other https://github.com/manoj79k/Lab1.git
