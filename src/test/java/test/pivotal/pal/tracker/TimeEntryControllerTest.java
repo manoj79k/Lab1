@@ -67,7 +67,7 @@ public class TimeEntryControllerTest {
 
     @Test
     public void testRead_NotFound() throws Exception {
-        long nonExistentTimeEntryId = 1L;
+        long nonExistentTimeEntryId = 2L;
         doReturn(null)
             .when(timeEntryRepository)
             .find(nonExistentTimeEntryId);
@@ -110,7 +110,7 @@ public class TimeEntryControllerTest {
 
     @Test
     public void testUpdate_NotFound() throws Exception {
-        long nonExistentTimeEntryId = 1L;
+        long nonExistentTimeEntryId = 2L;
         doReturn(null)
             .when(timeEntryRepository)
             .update(eq(nonExistentTimeEntryId), any(TimeEntry.class));
