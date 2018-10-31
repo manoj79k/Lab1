@@ -57,6 +57,31 @@ OPTIONS:
 
 
 cf app pal-tracker
+--To create the space
+cf create-space review -o imad-quadri
+-- To point the space with organization
+cf target -o "imad-quadri" -s "review"'
 
-git push origin other
-git remote add other https://github.com/manoj79k/Lab1.git
+pal_user@explode:~/workspace/pal-tracker$ cf domains
+Getting domains in org imad-quadri as squadri@ford.com...
+name                        status   type
+apps.pikes.pal.pivotal.io   shared
+
+<pre> https://api.sys.pikes.pal.pivotal.io</pre>
+
+CF_API_URL
+
+
+./gradlew cloudNativeDeveloperReviewPipeline -PreviewUrl=http://pal-tracker-aims-test123.apps.pikes.pal.pivotal.io
+
+-- To Create the database service 
+cf create-service p-mysql 100mb tracker-database
+
+-- To build the jdbc xml parameters/v cap service to application
+cf bind-service pal-tracker tracker-database
+
+-- To refresh/re-applied the jdbc service you created.
+cf restage pal-tracker
+
+cf env pal-tracker
+

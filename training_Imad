@@ -1571,3 +1571,6 @@ To https://github.com/DocumentManagementTeam/pivtollab.git
    ec5884b..8b39fb0  master -> master
 pal_user@explode:~/workspace/pal-tracker$ 
 
+./gradlew cloudNativeDeveloperDatabaseMigrations -PserverUrl=http://pal-tracker-aims-test123.apps.pikes.pal.pivotal.io
+
+
