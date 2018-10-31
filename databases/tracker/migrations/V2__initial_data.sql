@@ -1,0 +1,1 @@
+insert into time_entries (id,project_id,user_id) values (1,22,481);
